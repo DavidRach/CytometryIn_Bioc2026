@@ -1,0 +1,36 @@
+---
+title: "Cytometry In Bioconductor"
+format: html
+---
+
+```{r}
+library(xml2)
+library(rvest)
+```
+
+```{r}
+url <- "https://www.bioconductor.org/packages/release/BiocViews.html#___FlowCytometry"
+```
+
+```{r}
+Page <- read_html(url)
+
+body <- Page |> html_element("body")
+main_node <- Page |> html_element("main")
+
+section_node <- main_node |> html_element("section.content")
+tree_outer <- section_node |> html_element("#tree_outer")
+first_node <- html_children(tree_outer)[[2]]
+
+#packages_div <- html_node(tree_outer, "div#packages")
+```
+
+```{r}
+library(rvest)
+
+# View the HTML inside the node
+html_text(packages_div)   # just the text content
+html_nodes(packages_div, "*")  # all child nodes
+html_children(packages_div)    # direct children
+
+```

@@ -1,0 +1,16 @@
+---
+title: "Cytometry in R"
+format: html
+---
+
+Within the Bioconductor project, currently 69 packages contain a flow cytometry BiocView. The oldest package `flowcore` has been with the project for over 25 years, and receives the most weekly downloads (3000). However, the other R packages average are underutilized, with only around 200 downloads occuring after each release. 
+
+A factor in this remains that cytometry analysis in R represents a small fraction of analysis, with the majority of the flow cytometry community still analyzing via more traditional manua (supervised) gating methods via commercial software GUIs. However, with the advent of spectral flow cytometry, the datasets are rapidly increasing in complexity, requiring more unsupervised analysis techniques if the goal is to fully analyze the acquired datasets. As majority of the cutting-edge analysis continue to be implemented in R, building off the Bioconductor infrastructure, knowledge how to carry out analysis in R remains perceived as valuable. 
+
+However, learning resources for how to do Cytometry analysis in R remain limited. Those that exist are aimed primarily at those with intermediate bioinformatics expertise. Presents a barrier to entry that is insurmountable to most. 
+
+At the beginning of the year, we initiated an education outreach, a free weekly cytometry in R course, held both in-person and online, aimed at those with previous cytometry experience, who had no-to-little flow cytometry experience. This course is livestreamed via YouTube, with recordings made immediately available, and all course materials available via GitHub repository, with the associated Discussions page used as a community forum. In addition to learning R, participants were trained in version control via Git, and use of Quarto for documentation
+
+The response was astounding, with over 2000 completed interest forms worldwide, over 1000 unique individual viewers per weekly topic, and 500 forks being synced to bring in new materials eah week. All resources offered under cc-by-sa and AGPl3 licenses, allowing for community input after course conclusion. 
+
+Reaching a community where they are at, training the next generation of both users and future developers, and ensuring knowledge base to make these aspects viable longer term. 
