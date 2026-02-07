@@ -1,0 +1,212 @@
+---
+title: "Years In Bioconductor"
+format: html
+---
+
+```{r}
+packages <- c(
+  "flowCore",
+  "cytolib",
+  "flowWorkspace",
+  "ncdfFlow",
+  "flowViz",
+  "FlowSOM",
+  "ggcyto",
+  "openCyto",
+  "quantiseqr",
+  "flowStats",
+  "CytoML",
+  "CATALYST",
+  "flowAI",
+  "diffcyt",
+  "flowDensity",
+  "flowMeans",
+  "PeacoQC",
+  "flowFP",
+  "flowClean",
+  "flowPeaks",
+  "COMPASS",
+  "SamSPECTRAL",
+  "flowVS",
+  "cydar",
+  "flowMerge",
+  "flowTrans",
+  "distinct",
+  "flowCut",
+  "flowMatch",
+  "flowBeads",
+  "flowTime",
+  "sccomp",
+  "flowCHIC",
+  "flowSpecs",
+  "DepecheR",
+  "treekoR",
+  "flowBin",
+  "MetaCyto",
+  "immunoClust",
+  "scDataviz",
+  "cytoMEM",
+  "flowPloidy",
+  "plotGrouper",
+  "CytoDx",
+  "Sconify",
+  "flowPlots",
+  "GateFinder",
+  "flowGate",
+  "flowGraph",
+  "infinityFlow",
+  "cyanoFilter",
+  "optimalFlow",
+  "CytoGLMM",
+  "scifer",
+  "cytoKernel",
+  "CytoPipeline",
+  "censcyt",
+  "flowCyBar",
+  "reconsi",
+  "MACSQuantifyR",
+  "CytoMDS",
+  "CytoPipelineGUI",
+  "MAPFX",
+  "spillR",
+  "tidyFlowCore",
+  "CyTOFpower",
+  "tidytof",
+  "SuperCellCyto"
+)
+```
+
+```{r}
+library(xml2)
+library(rvest)
+library(dplyr)
+library(stringr)
+```
+
+```{r}
+DataScrapper <- function(x){
+
+file <- x
+
+Page <- paste0("https://www.bioconductor.org/packages/release/bioc/html/", file, ".html")
+
+page <- read_html(Page)
+text <- page  %>% html_element("body") %>% 
+  html_element("main div.container") %>% html_text2()
+
+Imports <- str_extract(text, "Imports\t[^\t]+")  # grab everything after "Imports\t" until next tab
+imports_text <- str_remove(Imports, "^Imports\t")
+#imports_vector <- str_split(imports_text, ",")[[1]] %>% str_trim()
+#imports_vector 
+
+license_line <- str_extract(text, "License\t[^\t]+")
+license <- str_remove(license_line, "^License\t") %>% str_trim()
+since_line <- str_extract(text, "In Bioconductor since\t[^\t]+")
+since <- str_remove(since_line, "^In Bioconductor since\t") %>% str_trim()
+
+Data <- data.frame(package=file, since=since, license=license, imports=imports_text)
+return(Data)
+}
+```
+
+
+```{r}
+AllFlow <- purrr::map(.x=packages, .f=DataScrapper) |> bind_rows()
+
+write.csv(AllFlow, "data/AllFlowPackages.csv", row.names=FALSE)
+```
+
+```{r}
+Timing <- AllFlow |> 
+  select(-imports) |> 
+  mutate(
+    since = str_extract(since, "\\([^()]+\\)$") |>  # last parentheses
+            str_remove_all("[()]") |>              # remove parentheses
+            str_remove(" years") |>                # remove " years"
+            as.numeric(),                           # convert to numeric
+    since = if_else(is.na(since), 0, since)        # replace NA with 0
+  )
+```
+
+```{r}
+library(ggplot2)
+
+# Count number of packages per license
+license_counts <- Timing %>%
+  count(license)
+
+# Pie chart
+plot <- ggplot(license_counts, aes(x = "", y = n, fill = license)) +
+  geom_col(width = 1, color = "white") +   # create bar
+  coord_polar(theta = "y") +               # convert to pie
+  theme_void() +                            # remove axes
+  labs(fill = "License", title = "Bioconductor Packages by License") +
+  geom_text(aes(label = n),                 # add counts on slices
+            position = position_stack(vjust = 0.5))
+
+
+plotly::ggplotly(plot)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+# Preserve ordering by since for y-axis
+AllFlow_plot <- Timing %>%
+  arrange(desc(since)) %>%
+  mutate(package = factor(package, levels = package))  # keeps longest at top
+
+# Plot horizontal timeline with reversed axis labels
+plot <- ggplot(AllFlow_plot, aes(x = 0, xend = since, y = package, yend = package)) +
+  geom_segment(size = 2, color = "steelblue") +
+  scale_x_continuous(
+    trans = "reverse",           # reverse only axis numbers
+    breaks = seq(0, max(AllFlow_plot$since), by = 5)  # set breaks as needed
+  ) +
+  labs(
+    x = "Years in Bioconductor",
+    y = "Package",
+    title = "Duration of Packages in Bioconductor"
+  ) +
+  theme_minimal()
+
+# Save the plot
+if(!dir.exists("images")) dir.create("images")
+
+ggsave(
+  filename = "images/Timeline.png",
+  plot = plot,
+  width = 6,
+  height = 10,
+  dpi = 600
+)
+
+```
+
+```{r}
+order <- AllFlow_plot |> pull(package)
+
+Data <- read.csv("data/Dataset.csv", check.names=FALSE)
+
+Data <- Data |> filter(Month %in% "Nov")
+
+Data <- left_join(AllFlow_plot, Data, by="package")
+
+Data$package <- factor(Data$package, levels=order)
+```
+
+```{r}
+
+plot <- ggplot(Data, aes(x = since, y = Nb_of_distinct_IPs)) +
+  geom_point(aes(color = package), size = 3, alpha = 0.7) +  # each package a colored dot
+  labs(
+    x = "Years in Bioconductor",
+    y = "Number of Downloads",
+    title = "Package Downloads vs. Time in Bioconductor",
+    color = "Package"
+  ) +
+  theme_minimal()
+
+plotly::ggplotly(plot)
+``
