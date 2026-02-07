@@ -209,4 +209,44 @@ plot <- ggplot(Data, aes(x = since, y = Nb_of_distinct_IPs)) +
   theme_minimal()
 
 plotly::ggplotly(plot)
-``
+```
+
+
+# Dependencies
+
+```{r}
+order
+
+AllFlow <- read.csv("data/AllFlowPackages.csv", check.names=FALSE)
+AllFlow <- AllFlow |> select(package, imports)
+
+# Split by comma
+split_items <- lapply(split_items, function(x) {
+  x <- trimws(x)               # remove leading/trailing spaces
+  x <- gsub("\\(.*?\\)", "", x) # remove anything in parentheses
+  x <- trimws(x)               # trim again in case spaces left
+  x
+})
+
+filtered_items <- lapply(split_items, function(x) intersect(x, order))
+AllFlow$filtered_column <- sapply(filtered_items, paste, collapse = ",")
+
+Hmm <- AllFlow |> select(package, filtered_column)
+```
+
+```{r}
+Used <- Hmm |> filter(package %in% c("flowCore", "flowWorkspace", "openCyto", "ggcyto", 
+"CytoML", "PeacoQC", "flowSOM", "flowGate", "flowAI", "flowCut", "cytoMEM", "tidyFlowCore")) |> pull(package)
+
+Used2 <- Hmm |> filter(package %in% c("flowCore", "flowWorkspace", "openCyto", "ggcyto", 
+"CytoML", "PeacoQC", "flowSOM", "flowGate", "flowAI", "flowCut", "cytoMEM", "tidyFlowCore"))
+
+split_items <- strsplit(Used2$filtered_column, ",")
+
+# Trim whitespace (in case) and unlist to make a single vector
+all_items <- trimws(unlist(split_items))
+Dependencies <- unique(all_items)
+
+CummulativeUsed <- c(Used, Dependencies) |> unique()
+CummulativeUsed_sorted <- CummulativeUsed[order(match(CummulativeUsed, order))]
+```
