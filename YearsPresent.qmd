@@ -4,6 +4,7 @@ format: html
 ---
 
 ```{r}
+#| eval: FALSE
 packages <- c(
   "flowCore",
   "cytolib",
@@ -84,6 +85,8 @@ library(stringr)
 ```
 
 ```{r}
+#| eval: FALSE
+
 DataScrapper <- function(x){
 
 file <- x
@@ -111,12 +114,17 @@ return(Data)
 
 
 ```{r}
+#| eval: FALSE
 AllFlow <- purrr::map(.x=packages, .f=DataScrapper) |> bind_rows()
 
 write.csv(AllFlow, "data/AllFlowPackages.csv", row.names=FALSE)
 ```
 
 ```{r}
+AllFlow <- read.csv("data/AllFlowPackages.csv", check.names=FALSE)
+
+AllFlow <- AllFlow |> mutate(version = "3.22")
+
 Timing <- AllFlow |> 
   select(-imports) |> 
   mutate(
@@ -129,7 +137,59 @@ Timing <- AllFlow |>
 ```
 
 ```{r}
+DeprecatedPackages <- read.csv("data/Deprecated.csv", check.names=FALSE)
+DeprecatedPackages <- DeprecatedPackages |> select(package, since, license, version)
+DeprecatedPackages2 <- DeprecatedPackages |> 
+  mutate(
+    since = str_extract(since, "\\([^()]+\\)$") |>  # last parentheses
+            str_remove_all("[()]") |>              # remove parentheses
+            str_remove(" years") |>                # remove " years"
+            as.numeric(),                           # convert to numeric
+    since = if_else(is.na(since), 0, since)        # replace NA with 0
+  )
+
+DeprecatedPackages2
+
+current_version <- "3.22"
+
+# Extract the "year" part (digits after the decimal)
+DeprecatedPackages2 %>%
+mutate(
+    # extract the decimal part as numeric
+    decimal = as.numeric(sub(".*\\.", "", version)),
+    current_decimal = as.numeric(sub(".*\\.", "", current_version)),
+    # calculate years ago, each step is 0.5 year
+    years_ago = (current_decimal - decimal) * 0.5
+  ) %>%
+  select(version, years_ago)
+
+```
+
+```{r}
 library(ggplot2)
+
+Timing <- Timing |>
+  mutate(
+    license = recode(
+      license,
+      `GPL (>=2)` = "GPL (>= 2)",
+      `GPL (>=3)` = "GPL (>= 3)"
+    )
+  )
+
+Timing <- Timing |>
+  mutate(
+    license = recode(
+      license,
+      `GPL-2` = "GPL (>= 2)",
+      `GPL-3` = "GPL (>= 3)",
+      `GPL-3 + file LICENSE` = "GPL (>= 3)",
+    )
+  )
+
+Timing |> pull(license) |> unique()
+
+
 
 # Count number of packages per license
 license_counts <- Timing %>%
@@ -145,7 +205,21 @@ plot <- ggplot(license_counts, aes(x = "", y = n, fill = license)) +
             position = position_stack(vjust = 0.5))
 
 
-plotly::ggplotly(plot)
+plot
+```
+
+```{r}
+
+Timing <- Timing |> arrange(desc(since))
+ggplot(Timing, aes(x = since, fill = license)) +
+  geom_bar(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    x = "Years Since Original Publication",
+    y = "Share of Licenses",
+    fill = "License"
+  ) +
+  theme_minimal()
 ```
 
 ```{r}
