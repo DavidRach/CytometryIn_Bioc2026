@@ -1,0 +1,9 @@
+
+For spectral flow cytometry, the data analysis is complex, due to the increased number of markers compared to conventional flow cytometry (greater breadth) and faster acquisition speeds compared to mass cytometry (greater depth). If the goal is to analyze all acquired events instead of individual cell populations, unsupervised and semi-supervised methods are required. Within cytometry, the cutting-edge algorithms to do so are implemented as R packages, primarily within the Bioconductor project. 
+
+While many flow cytometrist express an interest to analyze their datasets in R, there are limited resources to learn how to do so. The available resources however tend to be aimed at experienced bioinformaticians, not coding beginners. To address this community barrier to entry, we are offering a free weekly "Cytometry in R" mini-course, aimed at those with previous flow cytometry experience, but no-to-little coding experience. 
+
+The course is offered both in-person, and via YouTube livestream (https://www.youtube.com/@CytometryInR) throughout the week, with recordings immediately available after. All code and other course materials are offered under open-source licenses via our course website (https://umgcccfcsr.github.io/CytometryInR/Schedule.html). 
+
+The community response has been astounding, with over 1926 researchers worldwide completing the interest form. Of these, follow-through and engagement is high, with the weekly videos being viewed by 1000 people on average, and the accompanying datasets being downloaded by 400 individuals. The lectures have been well received and praised for their thoroughness of their explanations aimed at beginners.
+
