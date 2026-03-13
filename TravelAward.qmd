@@ -1,0 +1,21 @@
+
+# Prompt
+
+ describe what you hope to get out of the conference, and provide any other information that can help the committee evaluate your application. You can also provide a link to a webpage or a CV.
+
+
+# Why I want to attend BioC
+
+I am applying for the travel award because finances are nebulous as I transition from being a PhD to becoming a postdoc. As my thesis lab ran out of funds, I started working at the flow cytometry core here at the University of Maryland, Baltimore while wrapping up my dissertation writing. Given the current fiscal climate, like many academic shared resource facilities here in the United States, our user-base usage is down and consequently there has been institutional belt tightening. Receiving a travel award would help defray the cost associated with travel, and given I am very frugal when attending conferences, make it possible to attend in the event that the staff self-improvement funds are slashed by the institution between now and then. 
+
+More broadly, this would be my first time presenting at BioC. I attended Boston and Grand Rapids on my own dime, and was immediately 
+
+
+
+What continues to draw me back is 1) the community itself (where else can you ... ), and 2) being struck by how different my experience/take-aways are each time I attend, and how these inevitably lead to new areas of exploration.
+
+Current path This was in part thanks to sessions of initially cursory interest that I attended back in , that became major interest by , which led to hitting the ground running. 
+
+There is also an element of looking for community feedback and being able to ask questions of those with prior experience. While Bioconductor Zulip is great, being able to track individuals down in person is better.  
+
+Given the uncertainty of where I might be next year, and that Seattle has good coffee, sounds like fun. 
