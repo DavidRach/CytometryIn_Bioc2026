@@ -15,7 +15,7 @@ This course covers one topic per week, with multiple livestream offerings to acc
 
 In addition to teaching R fundamentals to beginners within a cytometry-focused context, we also reinforce how to use Git for version control, Quarto for reproducible documentation, and other good coding practices. 
 
-The course is scheduled to continue for 30 weeks, covering intermediate and advanced content (https://umgcccfcsr.github.io/CytometryInR/Schedule). All recordings and course materials will remain available after the course concludes, providing a framework that future self-learners can utilize to make their learning journeys smoother than the ones we experienced when first getting started. 
+The course is scheduled to continue for 30 weeks, gradually covering intermediate and advanced content (https://umgcccfcsr.github.io/CytometryInR/Schedule). All recordings and course materials will remain available after the course concludes, providing a framework that future self-learners can utilize to make their learning journeys smoother than the ones we experienced when first getting started. 
 
 We highlight what has worked, things we wish we had done differently, and unappreciated elements encountered while reducing barriers to entry to a community that would “rather die than ever touch a command line”. We hope the resources made available through the course enable wider utilization of Bioconductor flow cytometry packages, and inspire next generation of package maintainers and developers. 
 

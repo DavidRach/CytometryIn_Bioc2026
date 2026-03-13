@@ -6,16 +6,14 @@
 
 # Why I want to attend BioC
 
-I am applying for the travel award because finances are nebulous as I transition from being a PhD to becoming a postdoc. As my thesis lab ran out of funds, I started working at the flow cytometry core here at the University of Maryland, Baltimore while wrapping up my dissertation writing. Given the current fiscal climate, like many academic shared resource facilities here in the United States, our user-base usage is down and consequently there has been institutional belt tightening. Receiving a travel award would help defray the cost associated with travel, and given I am very frugal when attending conferences, make it possible to attend in the event that the staff self-improvement funds are slashed by the institution between now and then. 
+I am applying for the travel award because finances are nebulous as I transition from being a PhD to becoming a postdoc. As my thesis lab ran out of funds, I started working at the flow cytometry core here at the University of Maryland, Baltimore while wrapping up my dissertation writing. Given the current fiscal climate, like many academic shared resource facilities here in the United States, usage by our user-base is down and there has been institutional belt tightening. Receiving a travel award would help defray the cost associated with travel, and given I am very frugal when attending conferences, make it possible to attend in the event that the staff self-improvement funds are slashed by the institution between now and then. 
 
-More broadly, this would be my first time presenting at BioC. I attended Boston and Grand Rapids on my own dime, and was immediately 
+This would be my first time presenting at BioC (for both Boston and Grand Rapids I only attended). What continues to draw me back is 1) the community itself (where else can you find as many biomedically-focused R package maintainers and users gathered at the same time); and 2) being struck by how my different experiences/take-aways each time I attend inevitably lead to new areas of exploration. 
 
+For example, when I first attended in Boston, I had only been coding in R for about a year, mostly trying to implement Bioconductor package vignettes for my own datasets. The workshops and package demos were immediately helpful for this short-term goal, however, my larger take-away after talking with all the package maintainers was that I didn't need to stick with coloring within the lines, that if there was something I wanted to do, I should just code it into existence. Looking back at my GitHub commit history, it was shortly after getting back from Boston that I started working on my own R packages. 
 
+By Grand Rapids, I had these in working shape for my own analysis, but was struggling at how to implement S4 objects and other package infrastructure in a way that would make sense if I wanted others to also be able to use them. While I did get these specific questions answered, during the discussions and workshops the importance of vignettes and unit testing became clearer to me, so a lot of the following year was spent learning and tinkering with both. And interestingly enough, it was during Tim's live WebR workshop that I thought "You know, I could use some of these elements if I ever try teaching a Cytometry in R course". 
 
-What continues to draw me back is 1) the community itself (where else can you ... ), and 2) being struck by how different my experience/take-aways are each time I attend, and how these inevitably lead to new areas of exploration.
+It is for these reasons, alongside that I will be wrapping up a cool passion project that I am excited to share, that I want to attend BioC in person. While the Bioconductor Zulip is great for keeping in touch, given the uncertainty of where I might be during the next year, I would like to attend in person. And besides, I hear Seattle has both coffee and ferry boats! 
 
-Current path This was in part thanks to sessions of initially cursory interest that I attended back in , that became major interest by , which led to hitting the ground running. 
-
-There is also an element of looking for community feedback and being able to ask questions of those with prior experience. While Bioconductor Zulip is great, being able to track individuals down in person is better.  
-
-Given the uncertainty of where I might be next year, and that Seattle has good coffee, sounds like fun. 
+GitHub (Resume PDF linked in the README): https://github.com/DavidRach 
