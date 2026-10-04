@@ -186,8 +186,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#bioc2026---cytometry-in-r" id="toc-bioc2026---cytometry-in-r" class="nav-link active" data-scroll-target="#bioc2026---cytometry-in-r">Bioc2026 - Cytometry in R</a></li>
-  <li><a href="#github-repository-organization." id="toc-github-repository-organization." class="nav-link" data-scroll-target="#github-repository-organization.">GitHub repository organization.</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
   <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
   </ul>
 </nav>
@@ -198,22 +197,28 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
 
 
 
-<p><img src="images/WebsiteBanner.png" class="img-fluid" style="width:100.0%"></p>
 <div style="text-align: right;">
 <p><a href="https://www.gnu.org/licenses/agpl-3.0.en.html"><img src="https://img.shields.io/badge/license-AGPLv3-blue.png" class="img-fluid" alt="AGPL-3.0"></a> <a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg" class="img-fluid" alt="CC BY-SA 4.0"></a></p>
 </div>
-<section id="bioc2026---cytometry-in-r" class="level1">
-<h1>Bioc2026 - Cytometry in R</h1>
-<p>This is the repository for our Bioc2026 slides.</p>
-<p>Click <a href="./DavidRach_CytometryInR_BioC2026.pdf">here</a> to navigate to the .pdf of the slides, which can be downloaded.</p>
-<p>For our Cytometry in R course, click <a href="https://umgcccfcsr.github.io/CytometryInR/course/">here</a>.</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p><strong>Cytometry in R: A free weekly course for flow cytometrist with no-to-little coding experience</strong></p>
+<p>David Rach1,2, Natarajan Ayithan2, Xiaoxuan Fan2</p>
+<p>1 Molecular Microbiology and Immunology Graduate Program, University of Maryland School of Medicine, Baltimore, USA 2 Flow Cytometry Shared Resource, University of Maryland Greenebaum Comprehensive Cancer Center, Baltimore, USA</p>
+<p>Within Bioconductor there are 72 packages that list flow cytometry in their BiocViews, collectively permitting analysis of conventional, spectral and mass cytometry data. However, the majority of the packages are underutilized, with only 15 surpassing 4000 yearly downloads. A contributing factor to this is that traditionaly, flow cytometry analysis is carried out using commercial software (ex. FlowJo and FCSExpress), with a graphical-user interface being used to draw gates around a cell population of interest on 2-D plots. Cells falling within this gate are filtered for, additional gates are subsequently drawn, resulting in a gating hierarchy enabling the isolation of a cell population of interest for statistical analysis.</p>
+<p>With the emergence of spectral flow cytometry in the last decade, which is capable of profiling 20-50 markers on millions of cells within a few minutes, the resulting datasets are growing increasingly complex. Semi-supervised and unsupervised analytical methods (often implemented as Bioconductor packages) will need to be used in the analysis.</p>
+<p>For most flow cytometrist, with no-to-limited coding skills, this presents a barrier to entry. While learning resources exist for those with intermediate coding skills (such as individual package vignetters, workflows, and the odd workshop recording), these are not aimed at beginners. Consequently, many self-study attempts end in frustration.</p>
+<p>To address this urgent community need (and reduce the barrier to entry), starting in February 2026 we have been offering a free weekly “Cytometry in R” course, offered both in-person and online, aimed at flow cytometrists with no coding experience. The community response was outstanding, with over 1993 worldwide participants filling out the interest form, 529 participants creating new GitHub accounts and forking the course repository, and between 300-500 distinct viewers per weekly topic.</p>
+<p>This course covers one topic per week, with multiple livestream offerings to accomodate different timezones. Recordings are available via our YouTube channel (https://www.youtube.com/<span class="citation" data-cites="CytometryInR">@CytometryInR</span>). The course is run out of a GitHub repository (https://github.com/UMGCCCFCSR/CytometryInR), with all course materials, code and datasets being offered under CC-BY-SA and AGPL3-0 licenses. This permits hosting the course website (built using Quarto) as a GitHub page, and utilization of the Discussion page as a community forum to field beginner questions ranging from installation errors, missed library calls, etc.</p>
+<p>In addition to teaching R fundamentals to beginners within a cytometry-focused context, we also reinforce how to use Git for version control, Quarto for reproducible documentation, and other good coding practices.</p>
+<p>The course is scheduled to continue for 30 weeks, gradually covering intermediate and advanced content (https://umgcccfcsr.github.io/CytometryInR/Schedule). All recordings and course materials will remain available after the course concludes, providing a framework that future self-learners can utilize to make their learning journeys smoother than the ones we experienced when first getting started.</p>
+<p>We highlight what has worked, things we wish we had done differently, and unappreciated elements encountered while reducing barriers to entry to a community that would “rather die than ever touch a command line”. We hope the resources made available through the course enable wider utilization of Bioconductor flow cytometry packages, and inspire next generation of package maintainers and developers.</p>
+<p><a href="https://github.com/DavidRach/CytometryIn_Bioc2026">Code</a> <a href="https://davidrach.github.io/CytometryIn_Bioc2026/DavidRach_CytometryInR_BioC2026.pdf">Slides</a> <a href="https://youtu.be/krVI-HXm4_w?si=A9jKpHfUWB0tfmrk&amp;t=1479">Recording</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/krVI-HXm4_w?si=z_y4Byro7SUZbiqZ&amp;start=1479" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
 </section>
-<section id="github-repository-organization." class="level1">
-<h1>GitHub repository organization.</h1>
-<p>The code to generate QR codes and extract survey comments in R can be found under the code_poster folder. Actual QR codes generated can be found under outputs folder. Images used that were brought in from other sources can be found in the images folder.</p>
-</section>
-<section id="license" class="level1">
-<h1>License</h1>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">License</h2>
 <p>In our commitment to open-science and open-source, all teaching materials are freely offered under a <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC-BY-SA</a> license, while all code examples are offered under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL3-0</a> copyleft license.</p>
 <p><br> <br></p>
 <div style="text-align: right;">
