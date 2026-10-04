@@ -35,7 +35,7 @@ The course is scheduled to continue for 30 weeks, gradually covering intermediat
 We highlight what has worked, things we wish we had done differently, and unappreciated elements encountered while reducing barriers to entry to a community that would “rather die than ever touch a command line”. We hope the resources made available through the course enable wider utilization of Bioconductor flow cytometry packages, and inspire next generation of package maintainers and developers. 
 
 [Code](https://github.com/DavidRach/CytometryIn_Bioc2026) 
-[Slides](https://davidrach.github.io/CytometryIn_Bioc2026/DavidRach_CytometryInR_BioC2026.pdf) 
+[Slides](/DavidRach_CytometryInR_BioC2026.pdf) 
 [Recording](https://youtu.be/krVI-HXm4_w?si=A9jKpHfUWB0tfmrk&t=1479)  
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/krVI-HXm4_w?si=z_y4Byro7SUZbiqZ&amp;start=1479" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
